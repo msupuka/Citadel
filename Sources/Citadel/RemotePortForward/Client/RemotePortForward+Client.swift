@@ -248,13 +248,12 @@ extension SSHClient {
     ///   - localPort: The local port to forward connections to.
     /// - Returns: Information about the established port forward, including the actual bound port.
     /// - Throws: If the server rejects the port forwarding request or if connection fails.
-    @discardableResult
     public func runRemotePortForward(
         host: String,
         port: Int,
         forwardingTo localHost: String,
         port localPort: Int,
-        onOpen: @escaping @Sendable (SSHRemotePortForward) async throws -> Void = { _ in },
+        onOpen: @escaping @Sendable (SSHRemotePortForward) async throws -> Void = { _ in }
     ) async throws {
         try await withRemotePortForward(
             host: host,
