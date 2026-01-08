@@ -253,7 +253,7 @@ extension SSHClient {
         port: Int,
         forwardingTo localHost: String,
         port localPort: Int,
-        onOpen: @escaping @Sendable (SSHRemotePortForward) async throws -> Void = { _ in },
+        onOpen: @escaping @Sendable (SSHRemotePortForward) async throws -> Void = { _ in }
     ) async throws {
         try await withRemotePortForward(
             host: host,
