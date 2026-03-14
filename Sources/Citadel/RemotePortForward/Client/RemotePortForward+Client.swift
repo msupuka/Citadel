@@ -258,6 +258,9 @@ extension SSHClient {
         try await withRemotePortForward(
             host: host,
             port: port,
+            configure: { channel in
+                channel.pipeline.addHandler(DataToBufferCodec())
+            },
             onOpen: onOpen
          ) { inboundClient in
             let outboundClient = try await ClientBootstrap(group: inboundClient.channel.eventLoop)
